@@ -1,19 +1,21 @@
 package main.model;
 
-import javax.persistence.*;
+import main.entity.PlayerEntity;
 
-@Entity
 public class Player {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_player")
     private int id;
     private String name;
     private String surname;
     private byte[] foto;
-    private String login;
-    private String password;
+
+    public static Player toModel(PlayerEntity playerEntity){
+        Player player = new Player();
+        player.setId(playerEntity.getId());
+        player.setName(playerEntity.getName());
+        player.setSurname(playerEntity.getSurname());
+        player.setFoto(playerEntity.getFoto());
+        return player;
+    }
 
     public int getId() {
         return id;
@@ -45,21 +47,5 @@ public class Player {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

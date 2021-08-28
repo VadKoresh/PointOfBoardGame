@@ -1,16 +1,15 @@
-package main.model;
+package main.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "board_game")
-public class BordGame {
+public class BoardGameEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_board_game")
     private int id;
-    private String name;
     private String info;
     private byte[] foto;
     @Column(name = "first_place")
@@ -19,6 +18,7 @@ public class BordGame {
     private int secondPlace;
     @Column(name = "third_place")
     private int thirdPlace;
+    private String name;
 
     public int getId() {
         return id;
@@ -26,14 +26,6 @@ public class BordGame {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getInfo() {
@@ -74,5 +66,13 @@ public class BordGame {
 
     public void setThirdPlace(int thirdPlace) {
         this.thirdPlace = thirdPlace;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
