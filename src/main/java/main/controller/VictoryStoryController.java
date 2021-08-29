@@ -19,7 +19,7 @@ public class VictoryStoryController {
     private VictoryStoryService victoryStoryService;
 
     @PostMapping("/")
-    public ResponseEntity addStory(List<VictoryStoryEntity> victoryStoryEntityList){
+    public ResponseEntity addStory(@RequestBody List<VictoryStoryEntity> victoryStoryEntityList){
         try {
             victoryStoryService.addStory(victoryStoryEntityList);
             return ResponseEntity.ok("Победные очки записаны!");
