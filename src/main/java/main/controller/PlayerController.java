@@ -1,10 +1,18 @@
 package main.controller;
 
+import main.entity.BoardGameEntity;
 import main.entity.PlayerEntity;
+import main.entity.VictoryStoryEntity;
+import main.entity.WinnerEntity;
 import main.exception.PlayerAlreadyExistEx;
 import main.exception.PlayerNotFoundException;
+import main.model.BoardGame;
 import main.model.Player;
+import main.model.VictoryStory;
+import main.model.Winner;
 import main.service.PlayerService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,10 +72,10 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updatePlayerFoto(@RequestParam("foto") MultipartFile file,
+    public ResponseEntity updatePlayerFoto(@RequestParam("foto") MultipartFile foto,
                                            @PathVariable int id){
         try {
-            return ResponseEntity.ok(playerService.updatePlayerFoto(file, id));
+            return ResponseEntity.ok(playerService.updatePlayerFoto(foto, id));
         }
         catch (Exception exception) {
             return ResponseEntity.badRequest().body("Произошла ошибка #1054");
@@ -82,5 +90,20 @@ public class PlayerController {
         catch (Exception exception) {
             return ResponseEntity.badRequest().body("Произошла ошибка #1055");
         }
+    }
+
+    @GetMapping("/getall")
+    public ResponseEntity gelJson(){
+        JSONObject playerEntity = new JSONObject();
+        JSONArray array = new JSONArray();
+        array.add(new PlayerEntity());
+        array.add(new Player());
+        array.add(new BoardGameEntity());
+        array.add(new BoardGame());
+        array.add(new VictoryStoryEntity());
+        array.add(new VictoryStory());
+        array.add(new WinnerEntity());
+        array.add(new Winner());
+        return ResponseEntity.ok(array);
     }
 }
