@@ -15,7 +15,7 @@ public class BoardGameController {
     @Autowired
     private BoardGameService boardGameService;
 
-    @PutMapping("/")
+    @PostMapping("/")
     public ResponseEntity addBoardGame(@RequestBody BoardGameEntity boardGameEntity){
         try {
             boardGameService.addBoardGame(boardGameEntity);
@@ -50,11 +50,6 @@ public class BoardGameController {
         }
     }
 
-    /**
-     * @param boardGameEntity
-     * необходимо найти по имени и изменить только очки
-     * @return
-     */
     @PutMapping("/")
     public ResponseEntity updatePointPlace(@RequestBody BoardGameEntity boardGameEntity){
         try {

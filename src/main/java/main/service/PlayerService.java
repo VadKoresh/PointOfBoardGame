@@ -19,11 +19,14 @@ public class PlayerService {
 
     @Autowired
     private PlayerRepository playerRepository;
+    @Autowired
+    private WinnerService winnerService;
 
     public PlayerEntity addPlayer(PlayerEntity player) throws PlayerAlreadyExistEx {
         if (playerRepository.findByLogin(player.getLogin()) != null) {
             throw new PlayerAlreadyExistEx("Пользователь с таким логином существвет!");
         }
+        winnerService.addWinner(player);
         PlayerEntity playerEntity = playerRepository.save(player);
         return playerEntity;
     }

@@ -18,7 +18,7 @@ import java.util.Optional;
 public class BoardGameService {
 
     @Autowired
-    BoardGameRepository boardGameRepository;
+    private BoardGameRepository boardGameRepository;
 
     public BoardGameEntity addBoardGame(BoardGameEntity boardGameEntity) throws BoardGameAlreadyExistEx {
         if (boardGameRepository.findByName(boardGameEntity.getName()) != null) {

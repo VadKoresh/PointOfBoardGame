@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class WinnerService {
@@ -20,12 +21,11 @@ public class WinnerService {
     @Autowired
     private PlayerRepository playerRepository;
 
-    public Winner addWinner(WinnerEntity winnerEntity, int idPlayer){
-        PlayerEntity playerEntity = null;
-        Optional<PlayerEntity> byId = playerRepository.findById(idPlayer);
-        if (byId.isPresent()){
-            playerEntity = byId.get();
-        }
+    /**
+     * ОБЯЗАТЕЛЬНО ПРОВЕРИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     */
+    public Winner addWinner(PlayerEntity playerEntity){
+        WinnerEntity winnerEntity = new WinnerEntity();
         winnerEntity.setPlayer(playerEntity);
         return Winner.toModel(winnerRepository.save(winnerEntity));
     }
@@ -36,6 +36,8 @@ public class WinnerService {
         for (WinnerEntity winnerEntity : all){
             winnerArrayList.add(Winner.toModel(winnerEntity));
         }
+        winnerArrayList.stream().filter(winner -> winner.getScore() > 0)
+                .collect(Collectors.toList());
         return winnerArrayList;
     }
 
