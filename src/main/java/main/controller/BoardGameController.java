@@ -3,59 +3,48 @@ package main.controller;
 import javassist.NotFoundException;
 import main.entity.BoardGameEntity;
 import main.exception.BoardGameAlreadyExistEx;
+import main.model.BoardGame;
 import main.service.BoardGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/boardgame")
+@Controller
+@RequestMapping("/boardgame/page")
 public class BoardGameController {
 
     @Autowired
     private BoardGameService boardGameService;
 
+    @GetMapping("/creategame")
+    public String createGamePage(Model model){
+        model.addAttribute("boardGameEntity", new BoardGameEntity());
+        return "addGame";
+    }
+
+    @PostMapping("/boardgame")
+    public String addBoardGame(@ModelAttribute("boardGameEntity") BoardGameEntity boardGameEntity){
+        try {
+            boardGameService.addBoardGame(boardGameEntity);
+        } catch (BoardGameAlreadyExistEx e) {
+            return e.getMessage();
+        }
+        return "redirect:/boardgame/";
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity getOneBoardGame(@PathVariable int id){
+    public String getOneBoardGame(@PathVariable int id, Model model){
+        BoardGame oneBoardGame = null;
         try {
-            return ResponseEntity.ok(boardGameService.getOneBoardGame(id));
+            oneBoardGame = boardGameService.getOneBoardGame(id);
         } catch (NotFoundException notFoundException){
-            return ResponseEntity.badRequest().body(notFoundException.getMessage());
+            return notFoundException.getMessage();
         }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1058");
-        }
+
+        model.addAttribute("boardGame", oneBoardGame);
+        return "boardGame";
     }
 
-    @GetMapping("/")
-    public ResponseEntity getAllBoardGame(){
-        try {
-            return ResponseEntity.ok(boardGameService.getAllBoardGame());
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1059");
-        }
-    }
-
-    @PutMapping("/")
-    public ResponseEntity updatePointPlace(@RequestBody BoardGameEntity boardGameEntity){
-        try {
-            return ResponseEntity.ok(boardGameService.updatePointPlace(boardGameEntity));
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1060");
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteBoardGame(@PathVariable int id){
-        try {
-            boardGameService.deleteBoardGame(id);
-            return ResponseEntity.ok("Игра успешно удалена!");
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1061");
-        }
-    }
 }

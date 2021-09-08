@@ -1,4 +1,4 @@
-package main.controller;
+package main.controller.rest;
 
 import main.entity.BoardGameEntity;
 import main.entity.PlayerEntity;
