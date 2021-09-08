@@ -31,7 +31,7 @@ public class BoardGameService {
     public BoardGame getOneBoardGame(int id) throws NotFoundException {
         Optional<BoardGameEntity> byId = boardGameRepository.findById(id);
         BoardGameEntity boardGameEntity = null;
-        if (byId.isPresent()){
+        if (!byId.isPresent()){
             throw new NotFoundException("Игра не найдена");
         }
         boardGameEntity = byId.get();

@@ -6,6 +6,7 @@ import main.exception.BoardGameAlreadyExistEx;
 import main.service.BoardGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,19 +15,6 @@ public class BoardGameController {
 
     @Autowired
     private BoardGameService boardGameService;
-
-    @PostMapping("/")
-    public ResponseEntity addBoardGame(@RequestBody BoardGameEntity boardGameEntity){
-        try {
-            boardGameService.addBoardGame(boardGameEntity);
-            return ResponseEntity.ok("Настольная игра сохранилась");
-        } catch (BoardGameAlreadyExistEx existEx){
-            return ResponseEntity.badRequest().body(existEx.getMessage());
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1057");
-        }
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity getOneBoardGame(@PathVariable int id){
