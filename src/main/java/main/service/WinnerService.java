@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,7 +37,9 @@ public class WinnerService {
         for (WinnerEntity winnerEntity : all){
             winnerArrayList.add(Winner.toModel(winnerEntity));
         }
-        winnerArrayList.stream().filter(winner -> winner.getScore() > 0)
+        winnerArrayList.stream()
+                .filter(winner -> winner.getScore() > 0)
+                .sorted(Comparator.comparing(Winner::getScore).reversed())
                 .collect(Collectors.toList());
         return winnerArrayList;
     }

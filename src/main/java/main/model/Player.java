@@ -8,12 +8,20 @@ public class Player {
     private String surname;
     private byte[] foto;
 
-    public static Player toModel(PlayerEntity playerEntity){
+    public static Player toModelForPagePlayer(PlayerEntity playerEntity){
         Player player = new Player();
         player.setId(playerEntity.getId());
         player.setName(playerEntity.getName());
         player.setSurname(playerEntity.getSurname());
         player.setFoto(playerEntity.getFoto());
+        return player;
+    }
+
+    public static Player toModel(PlayerEntity playerEntity){
+        Player player = new Player();
+        player.setId(playerEntity.getId());
+        player.setName(playerEntity.getName());
+        player.setSurname(playerEntity.getSurname());
         return player;
     }
 

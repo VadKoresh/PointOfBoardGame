@@ -35,13 +35,13 @@ public class PlayerService {
         PlayerEntity playerEntity = playerRepository.findByLogin(playerEntityUpdate.getLogin());
         playerEntity.setName(playerEntityUpdate.getName());
         playerEntity.setSurname(playerEntityUpdate.getSurname());
-        return Player.toModel(playerRepository.save(playerEntity));
+        return Player.toModelForPagePlayer(playerRepository.save(playerEntity));
     }
 
     public Player updatePlayerFoto(MultipartFile file, int id) throws IOException {
         PlayerEntity playerEntity = playerRepository.findById(id).get();
         playerEntity.setFoto(file.getBytes());
-        return Player.toModel(playerRepository.save(playerEntity));
+        return Player.toModelForPagePlayer(playerRepository.save(playerEntity));
     }
 
     public List<Player> getAll(){

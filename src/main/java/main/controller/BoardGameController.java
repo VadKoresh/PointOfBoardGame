@@ -5,6 +5,7 @@ import main.entity.BoardGameEntity;
 import main.exception.BoardGameAlreadyExistEx;
 import main.model.BoardGame;
 import main.service.BoardGameService;
+import main.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ public class BoardGameController {
 
     @Autowired
     private BoardGameService boardGameService;
+    @Autowired
+    private PlayerService playerService;
 
     @GetMapping("/creategame")
     public String createGamePage(Model model){
@@ -24,7 +27,7 @@ public class BoardGameController {
         return "addGame";
     }
 
-    @PostMapping("/boardgame")
+    @PostMapping("/")
     public String addBoardGame(@ModelAttribute("boardGameEntity") BoardGameEntity boardGameEntity){
         try {
             boardGameService.addBoardGame(boardGameEntity);
