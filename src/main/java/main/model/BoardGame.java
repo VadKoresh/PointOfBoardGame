@@ -18,7 +18,7 @@ public class BoardGame {
         boardGame.setFoto(boardGameEntity.getFoto());
         boardGame.setId(boardGameEntity.getId());
         boardGame.setInfo(boardGameEntity.getInfo());
-        boardGame.setSecondPlace(boardGame.getSecondPlace());
+        boardGame.setSecondPlace(boardGameEntity.getSecondPlace());
         boardGame.setThirdPlace(boardGameEntity.getThirdPlace());
         boardGame.setName(boardGameEntity.getName());
         return boardGame;
