@@ -1,10 +1,13 @@
 package main.service;
 
 import main.entity.PlayerEntity;
+import main.entity.VictoryStoryEntity;
 import main.exception.PlayerAlreadyExistEx;
 import main.exception.PlayerNotFoundException;
+import main.model.BoardGame;
 import main.model.Player;
 import main.repository.PlayerRepository;
+import main.repository.VictoryStoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.TreeMap;
 
 @Service
 public class PlayerService {
@@ -21,6 +25,8 @@ public class PlayerService {
     private PlayerRepository playerRepository;
     @Autowired
     private WinnerService winnerService;
+    @Autowired
+    private VictoryStoryRepository victoryStoryRepository;
 
     public PlayerEntity addPlayer(PlayerEntity player) throws PlayerAlreadyExistEx {
         if (playerRepository.findByLogin(player.getLogin()) != null) {
@@ -66,5 +72,14 @@ public class PlayerService {
     public int deletePlayer(int id){
         playerRepository.deleteById(id);
         return id;
+    }
+
+    public void getPlayersToStory(BoardGame boardGame){
+        List<VictoryStoryEntity> byBoardGameEntity = victoryStoryRepository.findByBoardGameEntity(boardGame);
+        TreeMap<Player, Integer> playerIntegerTreeMap = new TreeMap<>();
+        for (VictoryStoryEntity victoryStoryEntity : byBoardGameEntity){
+            Player player = Pla
+            playerIntegerTreeMap.containsKey()
+        }
     }
 }
