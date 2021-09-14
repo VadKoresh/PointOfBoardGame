@@ -44,16 +44,12 @@ public class WinnerService {
         return winnerArrayList;
     }
 
-    public Winner updateWinner(int id, int scoreUpdate){
+    public Winner updateWinner(PlayerEntity player, int scoreUpdate){
         /**
          * TODO
          * необходимо посмотреть в скиллбоксе как сразу обновить таблицу
          */
-        WinnerEntity winnerEntity = null;
-        Optional<WinnerEntity> byId = winnerRepository.findById(id);
-        if (byId.isPresent()){
-            winnerEntity = byId.get();
-        }
+        WinnerEntity winnerEntity = winnerRepository.findByPlayer(player);
         winnerEntity.setScore(winnerEntity.getScore() + scoreUpdate);
         return Winner.toModel(winnerRepository.save(winnerEntity));
     }

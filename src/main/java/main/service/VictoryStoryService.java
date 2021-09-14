@@ -18,7 +18,7 @@ public class VictoryStoryService {
     public void addStory(List<VictoryStoryEntity> victoryStoryEntityList){
         for (VictoryStoryEntity victoryStoryEntity : victoryStoryEntityList){
             victoryStoryRepository.save(victoryStoryEntity);
-            winnerService.updateWinner(victoryStoryEntity.getPlayer().getId(), victoryStoryEntity.getScore());
+            winnerService.updateWinner(victoryStoryEntity.getPlayer(), victoryStoryEntity.getScore());
         }
     }
 }
