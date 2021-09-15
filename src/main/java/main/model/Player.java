@@ -2,7 +2,10 @@ package main.model;
 
 import main.entity.PlayerEntity;
 
-public class Player {
+import java.util.Arrays;
+import java.util.Objects;
+
+public class Player implements Comparable<Player>{
     private int id;
     private String name;
     private String surname;
@@ -55,5 +58,10 @@ public class Player {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        return Integer.compare(id, o.id);
     }
 }

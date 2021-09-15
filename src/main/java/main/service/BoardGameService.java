@@ -28,14 +28,13 @@ public class BoardGameService {
         return boardGameEntity1;
     }
 
-    public BoardGame getOneBoardGame(int id) throws NotFoundException {
+    public BoardGameEntity getOneBoardGame(int id) throws NotFoundException {
         Optional<BoardGameEntity> byId = boardGameRepository.findById(id);
         BoardGameEntity boardGameEntity = null;
         if (!byId.isPresent()){
             throw new NotFoundException("Игра не найдена");
         }
-        boardGameEntity = byId.get();
-        return BoardGame.toModel(boardGameEntity);
+        return boardGameEntity = byId.get();
     }
 
     public List<BoardGame> getAllBoardGame(){

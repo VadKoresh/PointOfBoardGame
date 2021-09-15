@@ -39,13 +39,14 @@ public class BoardGameController {
 
     @GetMapping("/{id}")
     public String getOneBoardGame(@PathVariable int id, Model model){
-        BoardGame oneBoardGame = null;
+        BoardGameEntity oneBoardGame = null;
         try {
             oneBoardGame = boardGameService.getOneBoardGame(id);
         } catch (NotFoundException notFoundException){
             return notFoundException.getMessage();
         }
 
+        model.addAttribute("listPlayers", playerService.getPlayersToStory(oneBoardGame));
         model.addAttribute("boardGame", oneBoardGame);
         return "boardGame";
     }

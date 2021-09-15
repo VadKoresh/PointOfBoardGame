@@ -1,5 +1,6 @@
 package main.service;
 
+import main.entity.BoardGameEntity;
 import main.entity.PlayerEntity;
 import main.entity.VictoryStoryEntity;
 import main.exception.PlayerAlreadyExistEx;
@@ -13,10 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerService {
@@ -37,7 +36,7 @@ public class PlayerService {
         return playerEntity;
     }
 
-    public Player updatePlayerNameSurname(PlayerEntity playerEntityUpdate){
+    public Player updatePlayerNameSurname(PlayerEntity playerEntityUpdate) {
         PlayerEntity playerEntity = playerRepository.findByLogin(playerEntityUpdate.getLogin());
         playerEntity.setName(playerEntityUpdate.getName());
         playerEntity.setSurname(playerEntityUpdate.getSurname());
@@ -50,10 +49,10 @@ public class PlayerService {
         return Player.toModelForPagePlayer(playerRepository.save(playerEntity));
     }
 
-    public List<Player> getAll(){
+    public List<Player> getAll() {
         Iterable<PlayerEntity> all = playerRepository.findAll();
         ArrayList<Player> playerArrayList = new ArrayList<>();
-        for (PlayerEntity playerEntity: all){
+        for (PlayerEntity playerEntity : all) {
             playerArrayList.add(Player.toModel(playerEntity));
         }
         return playerArrayList;
@@ -62,24 +61,26 @@ public class PlayerService {
     public Player getOne(int id) throws PlayerNotFoundException {
         PlayerEntity playerEntity = null;
         Optional<PlayerEntity> byId = playerRepository.findById(id);
-        if (!byId.isPresent()){
+        if (!byId.isPresent()) {
             throw new PlayerNotFoundException("Пользователь не найден!");
         }
         playerEntity = byId.get();
         return Player.toModel(playerEntity);
     }
 
-    public int deletePlayer(int id){
+    public int deletePlayer(int id) {
         playerRepository.deleteById(id);
         return id;
     }
 
-    public void getPlayersToStory(BoardGame boardGame){
+    public List<Player> getPlayersToStory(BoardGameEntity boardGame) {
         List<VictoryStoryEntity> byBoardGameEntity = victoryStoryRepository.findByBoardGameEntity(boardGame);
         TreeMap<Player, Integer> playerIntegerTreeMap = new TreeMap<>();
-        for (VictoryStoryEntity victoryStoryEntity : byBoardGameEntity){
-            Player player = Pla
-            playerIntegerTreeMap.containsKey()
+
+        for (VictoryStoryEntity victoryStoryEntity : byBoardGameEntity) {
+            Player player = Player.toModel(victoryStoryEntity.getPlayer());
+            playerIntegerTreeMap.merge(player, victoryStoryEntity.getScore(), Integer::sum);
         }
+        return playerIntegerTreeMap.keySet().stream().limit(5).collect(Collectors.toList());
     }
 }

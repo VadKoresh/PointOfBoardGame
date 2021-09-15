@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface VictoryStoryRepository extends CrudRepository<VictoryStoryEntity, Integer> {
-    List<VictoryStoryEntity> findByBoardGameEntity(BoardGame boardGame);
+    List<VictoryStoryEntity> findByBoardGameEntity(BoardGameEntity boardGameEntity);
 }
