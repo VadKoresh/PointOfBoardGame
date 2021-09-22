@@ -31,17 +31,19 @@ public class WinnerService {
         return Winner.toModel(winnerRepository.save(winnerEntity));
     }
 
+    /**
+     * @return Возвращает отсортированный список по общим очкам
+     */
     public List<Winner> getAll(){
         Iterable<WinnerEntity> all = winnerRepository.findAll();
         ArrayList<Winner> winnerArrayList = new ArrayList<>();
         for (WinnerEntity winnerEntity : all){
             winnerArrayList.add(Winner.toModel(winnerEntity));
         }
-        winnerArrayList.stream()
+        return winnerArrayList.stream()
                 .filter(winner -> winner.getScore() > 0)
                 .sorted(Comparator.comparing(Winner::getScore).reversed())
                 .collect(Collectors.toList());
-        return winnerArrayList;
     }
 
     public Winner updateWinner(PlayerEntity player, int scoreUpdate){

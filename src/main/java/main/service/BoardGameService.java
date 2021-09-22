@@ -6,6 +6,7 @@ import main.entity.PlayerEntity;
 import main.exception.BoardGameAlreadyExistEx;
 import main.exception.PlayerAlreadyExistEx;
 import main.model.BoardGame;
+import main.model.BoardGameListPoint;
 import main.repository.BoardGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,17 @@ public class BoardGameService {
     public int deleteBoardGame(int id){
         boardGameRepository.deleteById(id);
         return id;
+    }
+
+    /**
+     * @return Возвращает список настольных игр со списком доступных победных очков
+     */
+    public List<BoardGameListPoint> getAllBoardGameWithListScore(){
+        Iterable<BoardGameEntity> boardGameRepositoryAll = boardGameRepository.findAll();
+        ArrayList<BoardGameListPoint> boardGameListPointArrayList = new ArrayList<>();
+        for (BoardGameEntity boardGameEntity : boardGameRepositoryAll){
+            boardGameListPointArrayList.add(BoardGameListPoint.toModelWithListPoint(boardGameEntity));
+        }
+        return boardGameListPointArrayList;
     }
 }

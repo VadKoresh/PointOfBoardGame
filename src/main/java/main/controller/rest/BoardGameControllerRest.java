@@ -58,4 +58,14 @@ public class BoardGameControllerRest {
             return ResponseEntity.badRequest().body("Произошла ошибка #1061");
         }
     }
+
+    @GetMapping("/listbgwlp")
+    public ResponseEntity getAllBoardGameWithListPoint(){
+        try {
+            return ResponseEntity.ok(boardGameService.getAllBoardGameWithListScore());
+        }
+        catch (Exception exception) {
+            return ResponseEntity.badRequest().body("Произошла ошибка #1160");
+        }
+    }
 }

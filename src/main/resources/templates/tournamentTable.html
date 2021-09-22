@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Тестовый проект</title>
+
+    <!-- Bootstrap & JS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <script src="/js/script.js"></script>
+    <script src="/js/fileJs.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+</head>
+<body>
+<header class="header">
+    <div class="container-fluid">
+        <span class="game-name">Турнирная таблица</span>
+    </div>
+</header>
+<hr>
+<div class="row">
+    <div class="text-center col-sm-3">
+    </div>
+    <hr>
+    <div class="text-center col-sm-3">
+    </div>
+    <div class="col-sm-3 text-center">
+        <!-- Кнопка Начислить баллы -->
+        <div class="container py-5 text-center">
+            <button type="button" class="btn btn-primary" id="takescore" data-target="#scoreform">
+                Начислить баллы
+            </button>
+        </div>
+        <!-- Форма  -->
+        <div class="modal fade" id="scoreform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="choose" action="server" method="POST">
+                            <fieldset class="fieldsetGame">
+                                <legend>Выберите игру:</legend>
+<!--                                <select id="choosedGame">-->
+<!--                                    <option th:each="boardGame : ${boardGames}"-->
+<!--                                            th:value="${boardGame.getId}"-->
+<!--                                            th:text="${boardGame.getName}">-->
+<!--                                    </option>-->
+<!--                                </select>-->
+                            </fieldset>
+                            <fieldset>
+                                <legend>Выберите игроков и количество баллов</legend>
+                                <div id="container">
+                                    <div class="dynamic-form">
+                                        <div class="inputs">
+                                            <select class="playerID">
+                                                <option th:each="playerTo : ${players}"
+                                                        th:value="${playerTo.getId}"
+                                                        th:text="${playerTo.getName} +' '+ ${playerTo.getSurname}">
+                                                </option>
+                                            </select>
+                                            <select class="playerScores">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <br>
+                                        </div>
+                                        <button type="button" class="btn btn-success" id="add">+</button>
+                                        <button type="button" class="btn btn-danger" id="remove">-</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    <button type="button" class="submit btn btn-success" data-dismiss="modal">Начислить
+                                        баллы
+                                    </button>
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4 text-center">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Конец формы-->
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center col-md-12">
+            <div class="game-name">
+                <table class="table" id="scores" border="1">
+                    <tr>
+                        <th>№</th>
+                        <th>Фамилия Имя Отчество</th>
+                        <th>Баллы</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<hr>
+<div class="container-fluid" id="footer">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <p>Copyright &copy; 2021 &middot; All Rights Reserved &middot; </p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+</div>
+</body>
+</html>

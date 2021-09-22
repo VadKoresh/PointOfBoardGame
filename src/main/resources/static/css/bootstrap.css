@@ -440,9 +440,7 @@ mark,
   background-color: #fcf8e3;
 }
 
-span, .game-name {
-	font-size: 2.5rem;
-	font-weight: 500;
+.game-name {
     line-height: 1.2;
     color: inherit;
 	font-family:inherit;
@@ -455,6 +453,10 @@ span, .game-name {
 	border-radius: 50px;
 }
 
+#footer{
+  color:#ffffff;
+}
+
 .header {
 	height: 260px;
 	background-image: url(../images/header.jpg);
@@ -463,6 +465,7 @@ span, .game-name {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  font-size:200%;
 }
 
 .list-unstyled {
@@ -2528,15 +2531,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: rgb(0, 0, 0);
+  background-color: #ffd000;
+  border-color: #000000;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: rgb(0, 0, 0);
+  background-color: #d99400;
+  border-color: #000000;
 }
 
 .btn-primary:focus, .btn-primary.focus {
