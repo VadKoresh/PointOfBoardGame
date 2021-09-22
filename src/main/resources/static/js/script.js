@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    /**
+     * В данных массивах содержатся объекты Игроки и Настольные игры.
+     * В переменноей indexGame содержится индекс Игры к которой мы будем обращаться
+     */
     var playersAr = [];
     var boardGameAr = [];
+    var indexGame = 0;
 
+    /**
+     * playersArray() запускает запрос "Список всех зарегистрированных игроков" при формировании страницы и записывает в массив playersAr.
+     * boardGameArray() запускает запрос "Список всех настольныхх игры" при формировании страницы и записывает в массив boardGameAr.
+     */
     playersArray();
     boardGameArray();
+    init();
+
 
     $('#takescore').click(function () {
         $('#scoreform').modal('show');
@@ -14,31 +25,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var k = $('input').size() + 1;
 
+        /**
+         *  divElement - добавляет новый див.
+         *  selectPlayer - добавляет селект со списком игроков.
+         *  selectScore - добавляет селект с победными очками характерными для выбранной игры.
+         */
         $('#add').click(function () {
-            let llineNull = document.createElement('br');
-            document.querySelector('.inputs').appendChild(llineNull);
+            let divElement = document.createElement('div');
 
-            let select = document.createElement('select');
-            select.onchange = "alert(this.value)";
-            select.classList.add('playerID');
+            let selectPlayer = document.createElement('select');
+            selectPlayer.classList.add('playerID');
             for (var i = 0; i < playersAr.length; i++) {
                 var opt = playersAr[i];
                 var el = document.createElement('option');
                 el.textContent = opt.name + ' ' + opt.surname;
                 el.value = opt.id;
-                select.appendChild(el);
+                selectPlayer.appendChild(el);
             }
-            document.querySelector('.inputs').appendChild(select);
 
-            // let selectPoint = document.createElement('select');
-            // select.classList.add('playerScores');
-            // for (var i = 0; i < document.g; i++) {
-            //
-            // }
+            let selectScore = document.createElement('select');
+            selectScore.classList.add('playerScores');
+            setSelectScore(selectScore);
 
-            $('<input type="text" class="playerScores" placeholder="Очки игрока" />').appendTo('.inputs');
+            divElement.appendChild(selectPlayer);
+            divElement.appendChild(selectScore);
+            document.querySelector('.inputs').appendChild(divElement);
+
             k++;
         });
+
 
         $('#remove').click(function () {
             if (k > 1) {
@@ -86,6 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 requestBody.push(requestObj);
             }
 
+            /**
+             * Функция для отправки начисленяи всех баллов.
+             */
             function hello() {
                 console.log(requestObj.score);
                 var jsonArray = JSON.stringify(requestBody);
@@ -93,16 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 let request = new XMLHttpRequest();
                 request.open('POST', '/story/');
                 request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-                request.send(jsonArray);//сюда мы можем боди
-                console.log("вроде как");
+                request.send(jsonArray);
             }
-
             hello();
 
         });
 
     });
 
+    /**
+     * Запрос для получения списка всех игроков.
+     */
     function playersArray() {
         let request = new XMLHttpRequest();
         request.open('GET', '/players/');
@@ -115,12 +134,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 data.forEach(item => {
                     playersAr.push(item)
                 });
-            } else {
-                console.error("Что-то пошло не такподтяжке игроков");
             }
         });
     }
 
+    /**
+     * Запрос для получения списка всех игры.
+     * В переменной select повешена функция изменения всех селектов по начислению победных очков.
+     */
     function boardGameArray() {
         let request = new XMLHttpRequest();
         request.open('GET', '/boardgame/listbgwlp');
@@ -134,6 +155,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     boardGameAr.push(item)
                 });
                 let select = document.createElement('select');
+                select.onchange = function () {
+                    indexGame = select.options.selectedIndex;
+                    $.each($('.playerScores'), function () {
+                        setSelectScore(this);
+                        document.getElementById('fieldPlayerAndScore');
+                    });
+                }
                 select.id = "choosedGame";
                 for (var i = 0; i < boardGameAr.length; i++) {
                     var opt = boardGameAr[i];
@@ -143,13 +171,51 @@ document.addEventListener('DOMContentLoaded', function () {
                     select.appendChild(el);
                 }
                 document.querySelector('.fieldsetGame').appendChild(select);
-            } else {
-                console.error("Что-то пошло не так в подтяжке игры");
             }
         });
-
     }
 
+    /**
+     * Данная функция преднозначена для изменения/добавляния селектов относительно выбранной игры.
+     */
+    function setSelectScore(element) {
+        if (element.length > 0) {
+            element.length = 0;
+        }
+        for (var i = 0; i < boardGameAr[indexGame].points.length; i++) {
+            var opt = boardGameAr[indexGame].points[i];
+            var el = document.createElement('option');
+            el.textContent = opt;
+            el.value = opt;
+            element.appendChild(el);
+        }
+    }
+
+    function init() {
+        let request = new XMLHttpRequest();
+        request.open('GET', '/winners/');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.send();//сюда мы можем боди
+
+        var count = 1;
+
+        request.addEventListener('readystatechange', function () {
+            if (request.readyState == 4 && request.status == 200) {
+                let data = JSON.parse(request.response);
+                data.forEach(item => {
+                    let card = document.createElement('tr');
+
+                    card.innerHTML = `
+                        <th>${count}</th>
+                        <th><a href="/players/${item.player.id}">${item.player.name} ${item.player.surname}</a></th>
+                        <th>${item.score}</div>
+                   `;
+                    document.querySelector('.table').appendChild(card);
+                    count++;
+                });
+            }
+        });
+    }
 });
 
 
