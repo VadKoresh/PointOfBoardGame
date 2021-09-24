@@ -28,7 +28,7 @@
         <div class="game-name">Лучшие игроки
             <p>
             <div th:each="player : ${listPlayers}">
-                <a th:href="@{'/players/' + ${player.getId()}}" th:text="${player.getName} +' '+ ${player.getSurname}"></a>
+                <a th:href="@{'/player/page/' + ${player.getId()}}" th:text="${player.getName} +' '+ ${player.getSurname}"></a>
             </div>
             </p>
         </div>

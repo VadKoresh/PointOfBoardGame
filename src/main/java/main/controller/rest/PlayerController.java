@@ -92,18 +92,4 @@ public class PlayerController {
         }
     }
 
-    @GetMapping("/getall")
-    public ResponseEntity gelJson(){
-        JSONObject playerEntity = new JSONObject();
-        JSONArray array = new JSONArray();
-        array.add(new PlayerEntity());
-        array.add(new Player());
-        array.add(new BoardGameEntity());
-        array.add(new BoardGame());
-        array.add(new VictoryStoryEntity());
-        array.add(new VictoryStory());
-        array.add(new WinnerEntity());
-        array.add(new Winner());
-        return ResponseEntity.ok(array);
-    }
 }

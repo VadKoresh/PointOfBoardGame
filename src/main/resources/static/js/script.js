@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     card.innerHTML = `
                         <th>${count}</th>
-                        <th><a href="/players/${item.player.id}">${item.player.name} ${item.player.surname}</a></th>
+                        <th><a href="/player/page/${item.player.id}">${item.player.name} ${item.player.surname}</a></th>
                         <th>${item.score}</div>
                    `;
                     document.querySelector('.table').appendChild(card);
