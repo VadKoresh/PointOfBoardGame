@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/playerPage.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <title>Личный кабинет</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container-fluid">
+                <span class="game-name">Личный кабинет</span>
+            </div>
+        </header>
+        <hr>
+        <div class="cabinet-frame">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 text-center">    
+                            <img id="foto" class="rounded-circle" src="../static/images/avatar.jpg">
+                            <div><br></div>
+                            <div>
+                                <button type="button" class="btn btn-primary" id="changePhoto">
+                                 Изменить фото
+                                </button>
+                            </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                </div>
+             </div>
+             <div><br></div>
+             <div class="container">
+             <div class="row">
+            <div class="text-center col-sm-4">
+                <div class="info-cabinet" id="name">Имя:</div>
+                <div class="info-cabinet" id="surname">Фамилия:</div>
+                <div class="info-cabinet" id="login">Логин:</div>
+                <div class="info-cabinet" id="password">Пароль:</div>
+                <div class="info-cabinet" id="phoneNumber">Телефон:</div>
+                <div class="info-cabinet" id="emailAddress">Электронная почта:</div>
+                <!--Кнопка редактирования информации игрока-->
+                <button type="button" class="btn btn-primary" id="changeInfo" data-target="#changeInfoForm">
+                    Редактировать данные
+                  </button>
+                  <!-- Форма редактирования данных игрока -->
+        <div class="modal fade" id="changeInfoForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="url" method="POST">
+                            <div class="form-group">
+                                <label>Имя пользователя</label>
+                                <input type="text" class="form-control" id="name" pattern="^[А-Яа-яЁё\s]+$" required>
+                                <small class="form-text text-muted">Введите новое имя пользователя (русскими буквами)</small>
+                              </div>
+                              <div class="form-group">
+                                <label>Фамилия пользователя</label>
+                                <input type="text" class="form-control" id="surname" pattern="^[А-Яа-яЁё\s]+$" required>
+                                <small class="form-text text-muted">Введите новую фамилию пользователя (русскими буквами)</small>
+                              </div>
+                              <div class="form-group">
+                                <label>Пароль пользователя</label>
+                                <input type="password" class="form-control" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <small class="form-text text-muted">Введите новый пароль. Пароль должен содержать как минимум одну цифру, одну заглавную и строчную букву и как минимум 8 или более символов.</small>
+                              </div>
+                              <div class="form-group">
+                                <label>Телефон пользователя</label>
+                                <input type="text" class="form-control" id="phoneNumber" placeholder="89998887766" pattern="8[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                <small id="emailHelp" class="form-text text-muted">Введите новый номер телефона</small>
+                              </div>
+                            <div class="form-group">
+                              <label>Электронная почта</label>
+                              <input type="email" class="form-control" id="emailAddress" placeholder="example@post.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                              <small class="form-text text-muted">Введите новый адрес электронной почты</small>
+                            </div>
+                            <input type="submit" class="submit btn btn-success">
+                          </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4 text-center">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Конец формы-->
+            </div>
+            <div class="col-sm-4 text-center">
+                <div></div>
+            </div>
+            <div class="col-sm-4 text-center"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="footer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <p>Copyright &copy; 2021 &middot; All Rights Reserved &middot; </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

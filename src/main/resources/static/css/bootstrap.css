@@ -453,6 +453,44 @@ mark,
 	border-radius: 50px;
 }
 
+.cabinet-frame {
+  
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 30px;
+  padding-top:30px;
+	padding-bottom:30px;
+	padding-left: 10px;
+	padding-right: 10px;
+  background-color:aliceblue;
+  border: 2mm ridge rgba(153, 26, 26, 1);
+	border-radius: 50px;
+  margin-top: 30px;
+  background-image: url(../images/cabinet_frame-font.JPG);
+	background-size:cover;
+}
+
+.info-cabinet{
+  text-align: left;
+  margin-bottom: 20px;
+  line-height: 1.2;
+    color: inherit;
+	font-family:inherit;
+	background-color:aliceblue;
+	border:7px double black;
+	border-radius: 50px;
+}
+
+.photo-box{
+  text-align: right;
+  margin-right: 10%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 #footer{
   color:#ffffff;
 }
