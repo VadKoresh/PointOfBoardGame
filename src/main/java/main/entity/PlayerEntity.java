@@ -17,6 +17,10 @@ public class PlayerEntity {
     private byte foto[];
     private String login;
     private String password;
+    @Column(name = "email")
+    private String emailAddress;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     public int getId() {
         return id;
@@ -64,5 +68,21 @@ public class PlayerEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
