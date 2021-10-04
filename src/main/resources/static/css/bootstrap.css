@@ -473,12 +473,27 @@ mark,
 .info-cabinet{
   text-align: left;
   margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  width: auto;
   line-height: 1.2;
     color: inherit;
 	font-family:inherit;
 	background-color:aliceblue;
 	border:7px double black;
 	border-radius: 50px;
+}
+
+.info-cabinet:hover {
+  color: black;
+  background-color: #8dcaff;
+  border-color: black;
+}
+
+.save-btn{
+  height: 30px;
+  width: 30px;
 }
 
 .photo-box{
