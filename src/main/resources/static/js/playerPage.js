@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    let playerId = 0 ;
-    let currentLocation = window.location.host + window.location.pathname + '/' + playerId ;
+    let currentLoc = String(window.location);
+    let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
+    //alert(newLoc);
+
 
     $('#changeInfo').click(function () {
         $('#changeInfoForm').modal('show');
@@ -77,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function init() {
             let request = new XMLHttpRequest();
-            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/4');
+            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/' + newLoc);
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             request.send();
 
