@@ -36,10 +36,13 @@ public class PlayerService {
         return playerEntity;
     }
 
-    public Player updatePlayerNameSurname(PlayerEntity playerEntityUpdate) {
+    public Player updatePlayer(PlayerEntity playerEntityUpdate) {
         PlayerEntity playerEntity = playerRepository.findByLogin(playerEntityUpdate.getLogin());
         playerEntity.setName(playerEntityUpdate.getName());
         playerEntity.setSurname(playerEntityUpdate.getSurname());
+        playerEntity.setEmailAddress(playerEntityUpdate.getEmailAddress());
+        playerEntity.setPhoneNumber(playerEntityUpdate.getPhoneNumber());
+        playerEntity.setPassword(playerEntityUpdate.getPassword());
         return Player.toModelForPagePlayer(playerRepository.save(playerEntity));
     }
 
@@ -56,6 +59,16 @@ public class PlayerService {
             playerArrayList.add(Player.toModel(playerEntity));
         }
         return playerArrayList;
+    }
+
+    public Player getOneForPage(int id) throws PlayerNotFoundException {
+        PlayerEntity playerEntity = null;
+        Optional<PlayerEntity> byId = playerRepository.findById(id);
+        if (!byId.isPresent()) {
+            throw new PlayerNotFoundException("Пользователь не найден!");
+        }
+        playerEntity = byId.get();
+        return Player.toModelForPagePlayer(playerEntity);
     }
 
     public Player getOne(int id) throws PlayerNotFoundException {

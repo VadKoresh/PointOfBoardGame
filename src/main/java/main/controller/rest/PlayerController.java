@@ -1,18 +1,9 @@
 package main.controller.rest;
 
-import main.entity.BoardGameEntity;
 import main.entity.PlayerEntity;
-import main.entity.VictoryStoryEntity;
-import main.entity.WinnerEntity;
 import main.exception.PlayerAlreadyExistEx;
 import main.exception.PlayerNotFoundException;
-import main.model.BoardGame;
-import main.model.Player;
-import main.model.VictoryStory;
-import main.model.Winner;
 import main.service.PlayerService;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +29,17 @@ public class PlayerController {
         }
     }
 
+    @GetMapping("/4page/{id}")
+    public ResponseEntity getOneForPage(@PathVariable int id){
+        try {
+            return ResponseEntity.ok(playerService.getOneForPage(id));
+        } catch (PlayerNotFoundException notFoundException){
+            return ResponseEntity.badRequest().body(notFoundException.getMessage());
+        }
+        catch (Exception exception) {
+            return ResponseEntity.badRequest().body("Произошла ошибка #1051");
+        }
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable int id) {
@@ -62,9 +64,9 @@ public class PlayerController {
     }
 
     @PutMapping("/")
-    public ResponseEntity updatePlayerNameSurname(@RequestBody PlayerEntity playerEntityUpdate){
+    public ResponseEntity updatePlayer(@RequestBody PlayerEntity playerEntityUpdate){
         try {
-            return ResponseEntity.ok(playerService.updatePlayerNameSurname(playerEntityUpdate));
+            return ResponseEntity.ok(playerService.updatePlayer(playerEntityUpdate));
         }
         catch (Exception exception) {
             return ResponseEntity.badRequest().body("Произошла ошибка #1053");
