@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function init() {
             let request = new XMLHttpRequest();
-            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/' + newLoc);
+            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/4page/' + newLoc);
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             request.send();
 
