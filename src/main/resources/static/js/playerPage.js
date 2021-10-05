@@ -2,12 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentLoc = String(window.location);
     let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
-    //alert(newLoc);
-
-
-    $('#changeInfo').click(function () {
-        $('#changeInfoForm').modal('show');
-    });
 
     $("#name").dblclick(function () {
         let originalValue;
@@ -98,3 +92,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 });
+
+// https://pointofboardgames.herokuapp.com/players/4page/

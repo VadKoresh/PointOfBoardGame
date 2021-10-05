@@ -455,8 +455,8 @@ mark,
 
 .cabinet-frame {
   
-  margin-right: 100px;
-  margin-left: 100px;
+  margin-right: 50px;
+  margin-left: 50px;
   margin-bottom: 30px;
   padding-top:30px;
 	padding-bottom:30px;
@@ -475,7 +475,8 @@ mark,
   margin-bottom: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 10px;
+  padding-right: 15px ;
+  padding-left: 30px;
   width: auto;
   line-height: 1.2;
     color: inherit;
@@ -498,12 +499,17 @@ mark,
 
 .photo-box{
   text-align: right;
-  margin-right: 10%;
   position: relative;
   width: 100%;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+#changePhoto {
+  margin-top: 20px ;
+  margin-bottom: 20px;
 }
 
 #footer{
