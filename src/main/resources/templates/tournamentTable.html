@@ -5,18 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Турнирная таблица</title>
-
-    <!-- Bootstrap & JS -->
+<!--    for server-->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <script src="/js/script.js"></script>
-<!--    <script src="/js/fileJs.js"></script>-->
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/js/bootstrap.js"></script>
+<!--    for localhost-->
+<!--    <link href="../static/css/bootstrap.css" rel="stylesheet">-->
+<!--    <script src="../static/js/script.js"></script>-->
+<!--    <script src="../static/js/jquery-1.11.3.min.js"></script>-->
+<!--    <script src="../static/js/bootstrap.js"></script>-->
 </head>
 <body>
 <header class="header">
     <div class="container-fluid">
-        <span class="game-name">Турнирная таблица</span>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="pointLogo">.</div>
+            </div>
+            <div class="col-md-4 game-name">Турнирная таблица</div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
 </header>
 <hr>
@@ -28,11 +37,11 @@
     </div>
     <div class="col-sm-3 text-center">
         <!-- Кнопка Начислить баллы -->
-        <div class="container py-5 text-center">
-            <button type="button" class="btn btn-primary" id="takescore" data-target="#scoreform">
-                Начислить баллы
-            </button>
-        </div>
+<!--        <div class="container py-5 text-center">-->
+<!--            <button type="button" class="btn btn-primary" id="takescore" data-target="#scoreform">-->
+<!--                Начислить баллы-->
+<!--            </button>-->
+<!--        </div>-->
         <!-- Форма  -->
         <div class="modal fade" id="scoreform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">

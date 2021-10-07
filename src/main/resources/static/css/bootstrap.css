@@ -447,16 +447,17 @@ mark,
 	background-color:aliceblue;
 	padding-top:30px;
 	padding-bottom:30px;
-	padding-left: 10px;
-	padding-right: 10px;
+    text-align: center;
+    vertical-align: center;
+
 	border:7px double black;
 	border-radius: 50px;
 }
 
 .cabinet-frame {
   
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 15px;
+  margin-left: 15px;
   margin-bottom: 30px;
   padding-top:30px;
 	padding-bottom:30px;
@@ -514,6 +515,18 @@ mark,
 
 #footer{
   color:#ffffff;
+}
+
+.pointLogo{
+  border-radius: 50%;
+  width: 132px;
+  height: 132px;
+  background-image: url("../images/pointLogo.jpg");
+  background-size: cover;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .header {
