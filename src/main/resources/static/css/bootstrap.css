@@ -521,7 +521,7 @@ mark,
   border-radius: 50%;
   width: 132px;
   height: 132px;
-  background-image: url("../images/pointLogo.jpg");
+  background-image: url(../images/pointLogo.jpg);
   background-size: cover;
   text-align: center;
   margin: auto;
