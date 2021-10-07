@@ -461,8 +461,8 @@ mark,
   margin-bottom: 30px;
   padding-top:30px;
 	padding-bottom:30px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
   background-color:aliceblue;
   border: 2mm ridge rgba(153, 26, 26, 1);
 	border-radius: 50px;
@@ -477,7 +477,7 @@ mark,
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 15px ;
-  padding-left: 30px;
+  padding-left: 15px;
   width: auto;
   line-height: 1.2;
     color: inherit;
