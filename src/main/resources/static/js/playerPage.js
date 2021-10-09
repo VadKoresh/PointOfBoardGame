@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentLoc = String(window.location);
     let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
 
-    fetch('https://pointofboardgames.herokuapp.com/story/' + newLoc)
+    fetch('https://pointofboardgames.herokuapp.com/story/${newLoc}')
         .then(response => response.json())
         .then(data => data.forEach(item => {
         let card = document.createElement('tr');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <th>${item.score}</th>
                    `;
         document.querySelector('#winStory').appendChild(card);
-        }));
+        })).catch(err => console.log(err));
 
     $("#name").dblclick(function () {
         let originalValue;
