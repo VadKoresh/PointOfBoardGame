@@ -7,16 +7,14 @@ import java.time.LocalDateTime;
 public class VictoryStory {
 
     private int id;
-    private Player player;
-    private BoardGame boardGame;
+    private BoardGameModel boardGameModel;
     private LocalDateTime date;
     private int score;
 
     public static VictoryStory toModel(VictoryStoryEntity victoryStoryEntity){
         VictoryStory victoryStory = new VictoryStory();
         victoryStory.setId(victoryStoryEntity.getId());
-        victoryStory.setBoardGame(BoardGame.toModel(victoryStoryEntity.getBoardGameEntity()));
-        victoryStory.setPlayer(Player.toModel(victoryStoryEntity.getPlayer()));
+        victoryStory.setBoardGame(BoardGameModel.toModel(victoryStoryEntity.getBoardGameEntity()));
         victoryStory.setDate(victoryStoryEntity.getDate());
         victoryStory.setScore(victoryStoryEntity.getScore());
         return victoryStory;
@@ -30,20 +28,12 @@ public class VictoryStory {
         this.id = id;
     }
 
-    public Player getPlayer() {
-        return player;
+    public BoardGameModel getBoardGame() {
+        return boardGameModel;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public BoardGame getBoardGame() {
-        return boardGame;
-    }
-
-    public void setBoardGame(BoardGame boardGame) {
-        this.boardGame = boardGame;
+    public void setBoardGame(BoardGameModel boardGameModel) {
+        this.boardGameModel = boardGameModel;
     }
 
     public LocalDateTime getDate() {

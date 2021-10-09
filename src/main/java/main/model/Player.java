@@ -11,18 +11,6 @@ public class Player implements Comparable<Player>{
     private String emailAddress;
     private String phoneNumber;
 
-    public static Player toModelForPagePlayer(PlayerEntity playerEntity){
-        Player player = new Player();
-        player.setId(playerEntity.getId());
-        player.setName(playerEntity.getName());
-        player.setSurname(playerEntity.getSurname());
-        player.setFoto(playerEntity.getFoto());
-        player.setLogin(playerEntity.getLogin());
-        player.setEmailAddress(playerEntity.getEmailAddress());
-        player.setPhoneNumber(playerEntity.getPhoneNumber());
-        return player;
-    }
-
     public static Player toModel(PlayerEntity playerEntity){
         Player player = new Player();
         player.setId(playerEntity.getId());
