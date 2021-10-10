@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentLoc = String(window.location);
     let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
 
-    fetch('https://pointofboardgames.herokuapp.com/story/${newLoc}')
+    fetch('/story/' + newLoc)
         .then(response => response.json())
         .then(data => data.forEach(item => {
         let card = document.createElement('tr');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function init() {
             let request = new XMLHttpRequest();
-            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/4page/' + newLoc);
+            request.open('GET', '/players/4page/' + newLoc);
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             request.send();
 
