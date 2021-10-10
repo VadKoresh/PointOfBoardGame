@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,8 @@ public class VictoryStoryController {
     @PostMapping("/")
     public ResponseEntity addStory(@RequestBody List<VictoryStoryEntity> victoryStoryEntityList){
         try {
-            victoryStoryService.addStory(victoryStoryEntityList);
+            LocalDateTime dateTime = LocalDateTime.now();
+            victoryStoryService.addStory(victoryStoryEntityList, dateTime);
             return ResponseEntity.ok("Победные очки записаны!");
         }
         catch (Exception exception) {
