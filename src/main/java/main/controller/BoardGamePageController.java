@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/boardgame/page")
-public class BoardGameController {
+public class BoardGamePageController {
 
     @Autowired
     private BoardGameService boardGameService;
