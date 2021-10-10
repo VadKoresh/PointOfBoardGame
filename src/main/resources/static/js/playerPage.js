@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetch('/players/4page/' + newLoc)
             .then(response => {
-                if (response.status != 200)
+                if (response.status == 200)
                     return response.json()
                 else {
                     const error = 'Пользователь не найден!'
