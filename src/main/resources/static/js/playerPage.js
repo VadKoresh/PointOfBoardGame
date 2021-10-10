@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $(document).ready(function () {
 
-        fetch('players/4page/' + newLoc)
+        fetch('/players/4page/' + newLoc)
             .then(response => {
                 if (response.status != 200)
                     return response.json()
