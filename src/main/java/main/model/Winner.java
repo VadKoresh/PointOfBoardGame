@@ -6,21 +6,21 @@ public class Winner {
 
     private int score;
     private int numberSeason;
-    private Player player;
+    private UserTochkiModel player;
 
     public static Winner toModel(WinnerEntity winnerEntity){
         Winner winner = new Winner();
         winner.setScore(winnerEntity.getScore());
         winner.setNumberSeason(winnerEntity.getNumberSeason());
-        winner.setPlayer(Player.toModel(winnerEntity.getPlayer()));
+        winner.setPlayer(UserTochkiModel.toModel(winnerEntity.getUserTochkiEntity()));
         return winner;
     }
 
-    public Player getPlayer() {
+    public UserTochkiModel getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public void setPlayer(UserTochkiModel player) {
         this.player = player;
     }
 
