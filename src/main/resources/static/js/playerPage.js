@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentLoc = String(window.location);
     let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
 
-    fetch('https://pointofboardgames.herokuapp.com/story/${newLoc}')
+    fetch('/story/' + newLoc)
         .then(response => response.json())
         .then(data => data.forEach(item => {
         let card = document.createElement('tr');
@@ -80,28 +80,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $(document).ready(function () {
 
-        init();
-
-        let request = new XMLHttpRequest()
-
-        function init() {
-            let request = new XMLHttpRequest();
-            request.open('GET', 'https://pointofboardgames.herokuapp.com/players/4page/' + newLoc);
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            request.send();
-
-            request.addEventListener('readystatechange', function () {
-                if (request.readyState == 4 && request.status == 200) {
-                    let data = JSON.parse(request.response);
-
-                    $("#name").html(data.name);
-                    $("#surname").html(data.surname);
-                    $("#login").html(data.login);
-                    $("#emailAddress").html(data.emailAddress);
-                    $("#phoneNumber").html(data.phoneNumber);
+        fetch('/players/4page/' + newLoc)
+            .then(response => {
+                if (response.status == 200)
+                    return response.json()
+                else {
+                    const error = 'Пользователь не найден!'
+                    $('body').css("background-image", "none");
+                    document.getElementById('body').innerHTML = error
                 }
-            });
-        }
+            })
+            .then(data => {
+                $("#name").html(data.name);
+                $("#surname").html(data.surname);
+                $("#login").html(data.login);
+                $("#emailAddress").html(data.emailAddress);
+                $("#phoneNumber").html(data.phoneNumber);
+            }).catch(err => console.log(err));
 
     });
 });
