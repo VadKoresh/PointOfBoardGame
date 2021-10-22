@@ -2,7 +2,7 @@ package main.controller;
 
 import main.entity.VictoryStoryEntity;
 import main.service.BoardGameService;
-import main.service.PlayerService;
+import main.service.UserTochkiService;
 import main.service.WinnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class TournamentTableController {
     @Autowired
     BoardGameService boardGameService;
     @Autowired
-    PlayerService playerService;
+    UserTochkiService playerService;
 
     @GetMapping("/")
     public String createGamePage(Model model){
@@ -29,10 +29,5 @@ public class TournamentTableController {
         model.addAttribute("boardGames", boardGameService.getAllBoardGame());
         model.addAttribute("players",playerService.getAll());
         return "tournamentTable";
-    }
-
-    @GetMapping("/test")
-    public String testPage(){
-        return "fileHtml";
     }
 }

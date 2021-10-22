@@ -12,8 +12,8 @@ public class VictoryStoryEntity {
     @Column(name = "id_victory_story")
     private int id;
     @ManyToOne
-    @JoinColumn(name = "id_player")
-    private PlayerEntity player;
+    @JoinColumn(name = "id_user_tochki")
+    private UserTochkiEntity userTochkiEntity;
     @ManyToOne
     @JoinColumn(name = "id_board_game")
     private BoardGameEntity boardGameEntity;
@@ -28,12 +28,12 @@ public class VictoryStoryEntity {
         this.id = id;
     }
 
-    public PlayerEntity getPlayer() {
-        return player;
+    public UserTochkiEntity getUserTochkiEntity() {
+        return userTochkiEntity;
     }
 
-    public void setPlayer(PlayerEntity player) {
-        this.player = player;
+    public void setUserTochkiEntity(UserTochkiEntity userTochkiEntity) {
+        this.userTochkiEntity = userTochkiEntity;
     }
 
     public BoardGameEntity getBoardGameEntity() {

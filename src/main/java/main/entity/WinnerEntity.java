@@ -14,8 +14,8 @@ public class WinnerEntity {
     @Column(name = "season")
     private int numberSeason;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_player")
-    private PlayerEntity player;
+    @JoinColumn(name = "id_user_tochki")
+    private UserTochkiEntity userTochkiEntity;
 
     public int getId() {
         return id;
@@ -41,11 +41,11 @@ public class WinnerEntity {
         this.numberSeason = numberSeason;
     }
 
-    public PlayerEntity getPlayer() {
-        return player;
+    public UserTochkiEntity getUserTochkiEntity() {
+        return userTochkiEntity;
     }
 
-    public void setPlayer(PlayerEntity player) {
-        this.player = player;
+    public void setUserTochkiEntity(UserTochkiEntity userTochkiEntity) {
+        this.userTochkiEntity = userTochkiEntity;
     }
 }
