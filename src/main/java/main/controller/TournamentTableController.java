@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/tournament")
+@RequestMapping("/")
 public class TournamentTableController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class TournamentTableController {
     @Autowired
     UserTochkiService playerService;
 
-    @GetMapping("/")
+    @GetMapping()
     public String createGamePage(Model model){
         model.addAttribute("victory", new VictoryStoryEntity());
 
