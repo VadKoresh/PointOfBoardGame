@@ -8,10 +8,10 @@ public class VictoryStory {
 
     private int id;
     private BoardGameModel boardGameModel;
-    private LocalDateTime date;
+    private String date;
     private int score;
 
-    public static VictoryStory toModel(VictoryStoryEntity victoryStoryEntity){
+    public static VictoryStory toModel(VictoryStoryEntity victoryStoryEntity) {
         VictoryStory victoryStory = new VictoryStory();
         victoryStory.setId(victoryStoryEntity.getId());
         victoryStory.setBoardGame(BoardGameModel.toModel(victoryStoryEntity.getBoardGameEntity()));
@@ -36,12 +36,12 @@ public class VictoryStory {
         this.boardGameModel = boardGameModel;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(LocalDateTime date) {
-        this.date = date;
+        this.date = date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear();
     }
 
     public int getScore() {

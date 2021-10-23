@@ -38,28 +38,8 @@ public class BoardGameControllerRest {
         }
     }
 
-    @PutMapping("/")
-    public ResponseEntity updatePointPlace(@RequestBody BoardGameEntity boardGameEntity){
-        try {
-            return ResponseEntity.ok(boardGameService.updatePointPlace(boardGameEntity));
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1060");
-        }
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteBoardGame(@PathVariable int id){
-        try {
-            boardGameService.deleteBoardGame(id);
-            return ResponseEntity.ok("Игра успешно удалена!");
-        }
-        catch (Exception exception) {
-            return ResponseEntity.badRequest().body("Произошла ошибка #1061");
-        }
-    }
-
-    @GetMapping("/listbgwlp")
+    @GetMapping("/listpointgame")
     public ResponseEntity getAllBoardGameWithListPoint(){
         try {
             return ResponseEntity.ok(boardGameService.getAllBoardGameWithListScore());
