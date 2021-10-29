@@ -482,7 +482,10 @@ mark,
 
 }
 
-
+.winStory {
+  margin-right: -25px;
+  margin-left: -25px;
+}
 
 .info-cabinet{
   text-align: left;
@@ -552,10 +555,11 @@ mark,
   @keyframes radial-pulse { 0% { box-shadow: 0 0 0 0px rgba(18,123,230, 0.5); } 100% { box-shadow: 0 0 0 15px rgba(18,123,230, 0); } }
 
 .header {
-	height: 260px;
+	height: 400px;
 	background-color: white;
     background-image: url("../images/header.jpg");
-	background-size:contain;
+	background-size:cover;
+    background-repeat: no-repeat;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -564,6 +568,9 @@ mark,
   margin-bottom: 4rem;
 }
 
+#foto{
+  border: 2px solid;
+}
 
 .list-unstyled {
   padding-left: 0;
