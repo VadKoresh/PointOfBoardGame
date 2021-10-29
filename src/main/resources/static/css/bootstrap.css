@@ -67,7 +67,8 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
-	background-image:url(../images/background.jpg);
+  background-image:url(../images/back.jpg);
+  background-size: cover;
 }
 
 [tabindex="-1"]:focus {
@@ -444,7 +445,7 @@ mark,
     line-height: 1.2;
     color: inherit;
 	font-family:inherit;
-	background-color:aliceblue;
+	background-color:white;
     margin-right: 15px;
     margin-left: 15px;
 	padding-top:30px;
@@ -452,6 +453,7 @@ mark,
     text-align: center;
 	border:7px double black;
 	border-radius: 50px;
+    vertical-align: auto;
 }
 
 .game-name h1 {
@@ -472,12 +474,17 @@ mark,
 	padding-bottom:30px;
 	padding-left: 5px;
 	padding-right: 5px;
-  background-color:aliceblue;
+  background-color:white;
+  background-image: url("../images/cabinet.jpg");
   border: 2mm ridge rgba(153, 26, 26, 1);
 	border-radius: 50px;
   margin-top: 30px;
-  background-image: url(../images/cabinetFrameFont.jpg);
-	background-size:cover;
+
+}
+
+.winStory {
+  margin-right: -25px;
+  margin-left: -25px;
 }
 
 .info-cabinet{
@@ -491,7 +498,7 @@ mark,
   line-height: 1.2;
     color: inherit;
 	font-family:inherit;
-	background-color:aliceblue;
+	background-color:white;
 	border:7px double black;
 	border-radius: 50px;
 }
@@ -523,31 +530,43 @@ mark,
 }
 
 #footer{
-  color:#ffffff;
+  color:#000000;
 }
 
 .pointLogo{
   border-radius: 50%;
-  width: 132px;
-  height: 132px;
+  border: 2px solid;
+  width: 150px;
+  height: 150px;
   background-image: url(../images/logo.jpg);
   background-size: cover;
   text-align: center;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 55px;
   margin-bottom: 20px;
 }
 
+.pulse { display: flex;
+  justify-content: center;
+  align-items: center;
+  color:black;
+  border-radius: 50%;
+  animation: radial-pulse 1s infinite; }
+  @keyframes radial-pulse { 0% { box-shadow: 0 0 0 0px rgba(18,123,230, 0.5); } 100% { box-shadow: 0 0 0 15px rgba(18,123,230, 0); } }
+
 .header {
 	height: 260px;
-	background-image: url(../images/header.jpg);
-	background-size:cover;
+	background-color: white;
+    background-image: url("../images/header.jpg");
+	background-size:contain;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
   font-size:200%;
+  margin-bottom: 4rem;
 }
+
 
 .list-unstyled {
   padding-left: 0;
