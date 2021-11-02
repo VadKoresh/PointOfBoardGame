@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentLoc = String(window.location);
     let newLoc = currentLoc.substring(currentLoc.lastIndexOf('/') + 1);
 
-    fetch('/story/' + newLoc)
+    fetch('https://tochkaserver.herokuapp.com/story/' + newLoc)
         .then(response => response.json())
         .then(data => data.forEach(item => {
         let card = document.createElement('tr');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $(document).ready(function () {
 
-        fetch('/players/4page/' + newLoc)
+        fetch('https://tochkaserver.herokuapp.com/players/4page/' + newLoc)
             .then(response => {
                 if (response.status == 200)
                     return response.json()

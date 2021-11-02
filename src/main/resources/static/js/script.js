@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var jsonArray = JSON.stringify(requestBody);
                 console.log(jsonArray);
                 let request = new XMLHttpRequest();
-                request.open('POST', '/story/');
+                request.open('POST', 'https://tochkaserver.herokuapp.com/story/');
                 request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 request.send(jsonArray);
             }
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function playersArray() {
         let request = new XMLHttpRequest();
-        request.open('GET', '/players/');
+        request.open('GET', 'https://tochkaserver.herokuapp.com/players/');
         request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         request.send();//сюда мы можем боди
 
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function boardGameArray() {
         let request = new XMLHttpRequest();
-        request.open('GET', '/boardgame/listbgwlp');
+        request.open('GET', 'https://tochkaserver.herokuapp.com/boardgame/listbgwlp');
         request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         request.send();//сюда мы можем боди
 
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function init() {
         let request = new XMLHttpRequest();
-        request.open('GET', '/winners/');
+        request.open('GET', 'https://tochkaserver.herokuapp.com/winners/');
         request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         request.send();//сюда мы можем боди
 
