@@ -456,6 +456,22 @@ mark,
     vertical-align: auto;
 }
 
+.win-table {
+  line-height: 1.2;
+  color: inherit;
+  font-family:inherit;
+  background-color:white;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top:30px;
+  padding-bottom:30px;
+  text-align: center;
+  border:7px double black;
+  border-radius: 50px;
+  vertical-align: auto;
+  height: 400px;
+}
+
 .game-name h1 {
   margin: 0;
   position: absolute;
