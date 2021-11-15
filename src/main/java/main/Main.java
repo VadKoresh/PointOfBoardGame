@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-        GetUpApp getUpApp = new GetUpApp();
-        getUpApp.getUp();
+//        GetUpApp getUpApp = new GetUpApp();
+//        getUpApp.getUp();
     }
 }
