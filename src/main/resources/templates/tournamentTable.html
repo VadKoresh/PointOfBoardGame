@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Турнирная таблица</title>
-<!--    for server-->
+    <!--    for server-->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <script src="/js/script.js"></script>
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/js/bootstrap.js"></script>
-<!--    for localhost-->
-<!--    <link href="../static/css/bootstrap.css" rel="stylesheet">-->
-<!--    <script src="../static/js/script.js"></script>-->
-<!--    <script src="../static/js/jquery-1.11.3.min.js"></script>-->
-<!--    <script src="../static/js/bootstrap.js"></script>-->
+    <!--    for localhost-->
+    <!--    <link href="../static/css/bootstrap.css" rel="stylesheet">-->
+    <!--    <script src="../static/js/script.js"></script>-->
+    <!--    <script src="../static/js/jquery-1.11.3.min.js"></script>-->
+    <!--    <script src="../static/js/bootstrap.js"></script>-->
 </head>
 <body>
 <header class="header">
@@ -30,80 +30,6 @@
         </div>
     </div>
 </header>
-<div class="row">
-    <div class="text-center col-sm-3">
-    </div>
-    <div class="text-center col-sm-3">
-    </div>
-    <div class="col-sm-3 text-center">
-        <!-- Кнопка Начислить баллы -->
-<!--        <div class="container py-5 text-center">-->
-<!--            <button type="button" class="btn btn-primary" id="takescore" data-target="#scoreform">-->
-<!--                Начислить баллы-->
-<!--            </button>-->
-<!--        </div>-->
-        <!-- Форма  -->
-        <div class="modal fade" id="scoreform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="choose" action="server" method="POST">
-                            <fieldset class="fieldsetGame">
-                                <legend>Выберите игру:</legend>
-                            </fieldset>
-                            <fieldset>
-                                <legend>Выберите игроков и количество баллов</legend>
-                                <div id="container">
-                                    <div class="dynamic-form">
-                                        <div class="inputs">
-                                            <select class="playerID">
-                                                <option th:each="playerTo : ${players}"
-                                                        th:value="${playerTo.getId}"
-                                                        th:text="${playerTo.getName} +' '+ ${playerTo.getSurname}">
-                                                </option>
-                                            </select>
-                                            <select class="playerScores">
-                                                <option value="3">3</option>
-                                                <option value="2">2</option>
-                                                <option value="1">1</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <br>
-                                        </div>
-                                        <button type="button" class="btn btn-success" id="add">+</button>
-                                        <button type="button" class="btn btn-danger" id="remove">-</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-4 text-center">
-                                    <button type="button" class="submit btn btn-success" data-dismiss="modal">Начислить
-                                        баллы
-                                    </button>
-                                </div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4 text-center">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Конец формы-->
-    </div>
-</div>
 <div class="container-fluid">
     <div class="row">
         <div class="text-center col-md-12">

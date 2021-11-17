@@ -17,10 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     init();
 
 
-    $('#takescore').click(function () {
-        $('#scoreform').modal('show');
-    });
-
     $(document).ready(function () {
 
         var k = $('input').size() + 1;
